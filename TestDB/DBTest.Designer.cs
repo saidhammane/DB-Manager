@@ -56,7 +56,6 @@
             this.dbLinkField.Name = "dbLinkField";
             this.dbLinkField.Size = new System.Drawing.Size(794, 127);
             this.dbLinkField.TabIndex = 0;
-            this.dbLinkField.Text = "e";
             // 
             // btnTestDB
             // 
