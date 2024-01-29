@@ -1,6 +1,6 @@
 ﻿namespace TestDB
 {
-    partial class DBTest
+    partial class AP_DB_Manager
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DBTest));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AP_DB_Manager));
             this.groupBoxNavbar = new System.Windows.Forms.GroupBox();
             this.dbLinkField = new System.Windows.Forms.RichTextBox();
             this.btnCrypt = new System.Windows.Forms.Button();
@@ -36,6 +36,7 @@
             this.btnTestDB = new System.Windows.Forms.Button();
             this.groupBoxFooter = new System.Windows.Forms.GroupBox();
             this.BtnDecrypt = new System.Windows.Forms.Button();
+            this.cryptField = new System.Windows.Forms.RichTextBox();
             this.groupBoxNavbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoder)).BeginInit();
             this.groupBoxFooter.SuspendLayout();
@@ -48,7 +49,7 @@
             this.groupBoxNavbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBoxNavbar.Location = new System.Drawing.Point(0, 0);
             this.groupBoxNavbar.Name = "groupBoxNavbar";
-            this.groupBoxNavbar.Size = new System.Drawing.Size(800, 124);
+            this.groupBoxNavbar.Size = new System.Drawing.Size(800, 90);
             this.groupBoxNavbar.TabIndex = 0;
             this.groupBoxNavbar.TabStop = false;
             // 
@@ -57,17 +58,18 @@
             this.dbLinkField.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dbLinkField.Location = new System.Drawing.Point(3, 16);
             this.dbLinkField.Name = "dbLinkField";
-            this.dbLinkField.Size = new System.Drawing.Size(794, 105);
+            this.dbLinkField.Size = new System.Drawing.Size(794, 71);
             this.dbLinkField.TabIndex = 0;
             this.dbLinkField.Text = "";
             // 
             // btnCrypt
             // 
-            this.btnCrypt.Location = new System.Drawing.Point(352, 14);
+            this.btnCrypt.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCrypt.Location = new System.Drawing.Point(720, 90);
             this.btnCrypt.Name = "btnCrypt";
-            this.btnCrypt.Size = new System.Drawing.Size(60, 40);
+            this.btnCrypt.Size = new System.Drawing.Size(80, 47);
             this.btnCrypt.TabIndex = 3;
-            this.btnCrypt.Text = "Crypt";
+            this.btnCrypt.Text = "Chiffré";
             this.btnCrypt.UseVisualStyleBackColor = true;
             this.btnCrypt.Click += new System.EventHandler(this.btnCrypt_Click);
             // 
@@ -87,22 +89,20 @@
             // 
             this.btnTestDB.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnTestDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnTestDB.Image = ((System.Drawing.Image)(resources.GetObject("btnTestDB.Image")));
-            this.btnTestDB.Location = new System.Drawing.Point(757, 16);
+            this.btnTestDB.Location = new System.Drawing.Point(673, 16);
             this.btnTestDB.Name = "btnTestDB";
-            this.btnTestDB.Size = new System.Drawing.Size(40, 41);
+            this.btnTestDB.Size = new System.Drawing.Size(124, 41);
             this.btnTestDB.TabIndex = 1;
+            this.btnTestDB.Text = "Tester la connexion";
             this.btnTestDB.UseVisualStyleBackColor = true;
             this.btnTestDB.Click += new System.EventHandler(this.btnTestDB_Click);
             // 
             // groupBoxFooter
             // 
-            this.groupBoxFooter.Controls.Add(this.BtnDecrypt);
             this.groupBoxFooter.Controls.Add(this.btnTestDB);
-            this.groupBoxFooter.Controls.Add(this.btnCrypt);
             this.groupBoxFooter.Controls.Add(this.pictureBoxLoder);
             this.groupBoxFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBoxFooter.Location = new System.Drawing.Point(0, 253);
+            this.groupBoxFooter.Location = new System.Drawing.Point(0, 208);
             this.groupBoxFooter.Name = "groupBoxFooter";
             this.groupBoxFooter.Size = new System.Drawing.Size(800, 60);
             this.groupBoxFooter.TabIndex = 4;
@@ -110,27 +110,40 @@
             // 
             // BtnDecrypt
             // 
-            this.BtnDecrypt.Location = new System.Drawing.Point(500, 14);
+            this.BtnDecrypt.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnDecrypt.Location = new System.Drawing.Point(640, 90);
             this.BtnDecrypt.Name = "BtnDecrypt";
-            this.BtnDecrypt.Size = new System.Drawing.Size(60, 40);
+            this.BtnDecrypt.Size = new System.Drawing.Size(80, 47);
             this.BtnDecrypt.TabIndex = 4;
-            this.BtnDecrypt.Text = "Decrypt";
+            this.BtnDecrypt.Text = "Déchiffrer";
             this.BtnDecrypt.UseVisualStyleBackColor = true;
             this.BtnDecrypt.Click += new System.EventHandler(this.BtnDecrypt_Click);
             // 
-            // DBTest
+            // cryptField
+            // 
+            this.cryptField.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cryptField.Location = new System.Drawing.Point(0, 137);
+            this.cryptField.Name = "cryptField";
+            this.cryptField.Size = new System.Drawing.Size(800, 71);
+            this.cryptField.TabIndex = 5;
+            this.cryptField.Text = "";
+            // 
+            // AP_DB_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 313);
+            this.ClientSize = new System.Drawing.Size(800, 268);
+            this.Controls.Add(this.BtnDecrypt);
+            this.Controls.Add(this.btnCrypt);
+            this.Controls.Add(this.cryptField);
             this.Controls.Add(this.groupBoxFooter);
             this.Controls.Add(this.groupBoxNavbar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "DBTest";
+            this.Name = "AP_DB_Manager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Test de connexion";
+            this.Text = "DB manager";
             this.groupBoxNavbar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoder)).EndInit();
             this.groupBoxFooter.ResumeLayout(false);
@@ -147,6 +160,7 @@
         private System.Windows.Forms.Button btnTestDB;
         private System.Windows.Forms.GroupBox groupBoxFooter;
         private System.Windows.Forms.Button BtnDecrypt;
+        private System.Windows.Forms.RichTextBox cryptField;
     }
 }
 

@@ -1,28 +1,26 @@
 ﻿using System;
-using System.Configuration;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
-using System.Security.Policy;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using static DBTest.Module.Helper;
+using static DBTest.Module.AP_Helper;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TestDB
 {
-    public partial class DBTest : Form
+    public partial class AP_DB_Manager : Form
     {
 
         private string connectionString;
-        public DBTest() => InitializeComponent();
+        public AP_DB_Manager() => InitializeComponent();
 
         private async void btnTestDB_Click(object sender, EventArgs e)
         {
-            
             try
             {
                 if (dbLinkField.Text.ToString() == "")
-                    _ = MessageBox.Show("le champ est vide !", "Base de donnée",
+                {
+                    AP_ShowString("le champ est vide !", "Base de donnée",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 else
                 {
                     pictureBoxLoder.Visible = true;
@@ -30,21 +28,20 @@ namespace TestDB
                     string dbLink = dbLinkField.Text.ToString();
                     if (!dbLink.Contains("Data"))
                     {
-                        dbLink = Decrypt(dbLink);
+                        dbLink = AP_Decrypt(dbLink);
                     }
                     cnn = new SqlConnection(dbLink);
 
                     await cnn.OpenAsync();
                     pictureBoxLoder.Visible = false;
-                    _ = MessageBox.Show("Connexion ouverte !", "Etat de connexion",
+                    AP_ShowString("Connexion ouverte !", "Etat de connexion",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
             }
             catch (Exception ex)
             {
                 pictureBoxLoder.Visible = false;
-                _ = MessageBox.Show(ex.Message, "Etat de connexion",
+                AP_ShowString(ex.Message, "Etat de connexion",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
@@ -55,19 +52,57 @@ namespace TestDB
 
         private void btnCrypt_Click(object sender, EventArgs e)
         {
-            connectionString = ConfigurationManager.ConnectionStrings["GAP_Prod"]?.ConnectionString;
 
-            Console.WriteLine(Encrypt(connectionString));
+            string dbLink = dbLinkField.Text.ToString();
+            if (dbLink == "")
+            {
+                AP_ShowString("le champ est vide !", "Cryptage",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (!dbLink.Contains("Data"))
+                {
+                    AP_ShowString("Le lien déjà chiffré", "Cryptage",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    dbLink = AP_Encrypt(dbLink);
+                    cryptField.Text = dbLink;
+                }
+                Clipboard.SetText(dbLink);
+                AP_ShowString("Le lien est copié!", "Cryptage",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void BtnDecrypt_Click(object sender, EventArgs e)
         {
-            connectionString = ConfigurationManager.ConnectionStrings["GAP_ProdC"]?.ConnectionString;
-
-            //Console.WriteLine(Decrypt(connectionString));
-            //Clipboard.SetText(Decrypt(test));
-
-            ShowString(Decrypt(connectionString), "Decrypter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string dbLink = dbLinkField.Text.ToString();
+            if (dbLink == "")
+            {
+                AP_ShowString("Le champ est vide !", "Cryptage",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (dbLink.Contains("Data"))
+                {
+                    AP_ShowString("Le lien n’est pas encore chiffré", "Cryptage",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    dbLink = AP_Decrypt(dbLink);
+                    cryptField.Text = dbLink;
+                }
+                Clipboard.SetText(dbLink);
+                AP_ShowString("Le lien est copié!", "Cryptage",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

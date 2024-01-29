@@ -16,7 +16,7 @@ namespace TestDB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DBTest());
+            Application.Run(new AP_DB_Manager());
         }
     }
 }

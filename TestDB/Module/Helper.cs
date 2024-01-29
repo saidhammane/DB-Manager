@@ -11,19 +11,19 @@ using System.Text.RegularExpressions;
 
 namespace DBTest.Module
 {
-    public static class Helper
+    public static class AP_Helper
     {
 
-        public static void ShowString(string text, string caption = null, MessageBoxButtons button = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Information)
+        public static string EncryptionKey = "AP_Dev_KEY";
+
+        public static void AP_ShowString(string text, string caption = null, 
+            MessageBoxButtons button = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Information)
         {
             _ = MessageBox.Show(text, caption, button, icon);
         }
 
-
-
-        public static string Encrypt(string clearText)
+        public static string AP_Encrypt(string clearText)
         {
-            string EncryptionKey = "abc123";
             byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
             using (Aes encryptor = Aes.Create())
             {
@@ -45,9 +45,8 @@ namespace DBTest.Module
         }
 
 
-        public static string Decrypt(string cipherText)
+        public static string AP_Decrypt(string cipherText)
         {
-            string EncryptionKey = "abc123";
             cipherText = cipherText.Replace(" ", "+");
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
             using (Aes encryptor = Aes.Create())
