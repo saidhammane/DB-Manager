@@ -2,8 +2,6 @@
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using static DBTest.Module.AP_Helper;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.LinkLabel;
 
 namespace TestDB
 {
@@ -32,7 +30,6 @@ namespace TestDB
                         dbLink = AP_Decrypt(dbLink);
                     }
                     cnn = new SqlConnection(dbLink);
-
                     await cnn.OpenAsync();
                     pictureBoxLoder.Visible = false;
                     AP_ShowString("Connexion ouverte !", "Etat de connexion",
