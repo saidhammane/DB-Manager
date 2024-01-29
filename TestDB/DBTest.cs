@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using static DBTest.Module.AP_Helper;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.LinkLabel;
 
 namespace TestDB
 {
@@ -63,7 +64,7 @@ namespace TestDB
             {
                 if (!dbLink.Contains("Data"))
                 {
-                    AP_ShowString("Le lien déjà chiffré", "Cryptage",
+                    AP_ShowString("Le lien doit être comme ça: Data Source=0.0.0.0; Initial Catalog=BD; User ID=utilisateur;password=motdepasse", "Cryptage",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
@@ -73,7 +74,7 @@ namespace TestDB
                     cryptField.Text = dbLink;
                 }
                 Clipboard.SetText(dbLink);
-                AP_ShowString("Le lien est copié!", "Cryptage",
+                AP_ShowString("Le lien est copié !", "Cryptage",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -100,9 +101,22 @@ namespace TestDB
                     cryptField.Text = dbLink;
                 }
                 Clipboard.SetText(dbLink);
-                AP_ShowString("Le lien est copié!", "Cryptage",
+                AP_ShowString("Le lien est copié !", "Cryptage",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void dbLinkField_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cryptField.Text = dbLinkField.Text;
+            }
+            catch(Exception ex)
+            {
+                AP_ShowString(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }

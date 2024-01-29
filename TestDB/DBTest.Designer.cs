@@ -61,6 +61,7 @@
             this.dbLinkField.Size = new System.Drawing.Size(794, 71);
             this.dbLinkField.TabIndex = 0;
             this.dbLinkField.Text = "";
+            this.dbLinkField.TextChanged += new System.EventHandler(this.dbLinkField_TextChanged);
             // 
             // btnCrypt
             // 
