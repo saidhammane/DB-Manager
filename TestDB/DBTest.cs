@@ -1,18 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Configuration;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System.Security.Policy;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static DBTest.Module.Helper;
 
 namespace TestDB
 {
     public partial class DBTest : Form
     {
+
+        private string connectionString;
         public DBTest() => InitializeComponent();
 
         private async void btnTestDB_Click(object sender, EventArgs e)
@@ -27,7 +27,12 @@ namespace TestDB
                 {
                     pictureBoxLoder.Visible = true;
                     SqlConnection cnn;
-                    cnn = new SqlConnection(dbLinkField.Text.ToString());
+                    string dbLink = dbLinkField.Text.ToString();
+                    if (!dbLink.Contains("Data"))
+                    {
+                        dbLink = Decrypt(dbLink);
+                    }
+                    cnn = new SqlConnection(dbLink);
 
                     await cnn.OpenAsync();
                     pictureBoxLoder.Visible = false;
@@ -35,7 +40,8 @@ namespace TestDB
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 pictureBoxLoder.Visible = false;
                 _ = MessageBox.Show(ex.Message, "Etat de connexion",
@@ -47,5 +53,21 @@ namespace TestDB
             }
         }
 
+        private void btnCrypt_Click(object sender, EventArgs e)
+        {
+            connectionString = ConfigurationManager.ConnectionStrings["GAP_Prod"]?.ConnectionString;
+
+            Console.WriteLine(Encrypt(connectionString));
+        }
+
+        private void BtnDecrypt_Click(object sender, EventArgs e)
+        {
+            connectionString = ConfigurationManager.ConnectionStrings["GAP_ProdC"]?.ConnectionString;
+
+            //Console.WriteLine(Decrypt(connectionString));
+            //Clipboard.SetText(Decrypt(test));
+
+            ShowString(Decrypt(connectionString), "Decrypter", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
