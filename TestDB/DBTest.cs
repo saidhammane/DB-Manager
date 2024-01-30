@@ -15,7 +15,7 @@ namespace TestDB
             {
                 if (dbLinkField.Text.ToString() == "")
                 {
-                    AP_ShowStringPopUp("le champ est vide !", "Base de donnée",
+                    AP_ShowStringPopUp("Le champ est vide !", "Base de donnée",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -52,7 +52,7 @@ namespace TestDB
             string dbLink = dbLinkField.Text.ToString();
             if (dbLink == "")
             {
-                AP_ShowStringPopUp("le champ est vide !", "Cryptage",
+                AP_ShowStringPopUp("Le champ est vide !", "Cryptage",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -61,7 +61,8 @@ namespace TestDB
                 {
                     if (!dbLink.Contains("Data"))
                     {
-                        AP_ShowStringPopUp("Le lien doit être comme ça: Data Source=0.0.0.0; Initial Catalog=BD; User ID=utilisateur;password=motdepasse", "Cryptage",
+                        AP_ShowStringPopUp("Le lien doit être comme ça: Data Source=0.0.0.0; " +
+                            "Initial Catalog=BD; User ID=utilisateur;password=motdepasse", "Cryptage",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
@@ -73,6 +74,7 @@ namespace TestDB
                     Clipboard.SetText(dbLink);
                     AP_ShowStringPopUp("Le lien est copié !", "Cryptage",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cryptField.Enabled = true;
                 }
                 catch(Exception ex)
                 {
@@ -107,7 +109,9 @@ namespace TestDB
                     Clipboard.SetText(dbLink);
                     AP_ShowStringPopUp("Le lien est copié !", "Cryptage",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }catch(Exception ex)
+                    cryptField.Enabled = true;
+                }
+                catch(Exception ex)
                 {
                     AP_ShowStringPopUp(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -126,5 +130,13 @@ namespace TestDB
             }
             
         }
+
+        private void buttonClean_Click(object sender, EventArgs e)
+        {
+            cryptField.Text = "";
+            dbLinkField.Text = "";
+            cryptField.Enabled = false;
+        }
+
     }
 }

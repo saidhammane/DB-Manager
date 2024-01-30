@@ -35,6 +35,7 @@
             this.pictureBoxLoader = new System.Windows.Forms.PictureBox();
             this.btnTestDB = new System.Windows.Forms.Button();
             this.groupBoxFooter = new System.Windows.Forms.GroupBox();
+            this.buttonClean = new System.Windows.Forms.Button();
             this.BtnDecrypt = new System.Windows.Forms.Button();
             this.cryptField = new System.Windows.Forms.RichTextBox();
             this.groupBoxNavbar.SuspendLayout();
@@ -100,6 +101,7 @@
             // 
             // groupBoxFooter
             // 
+            this.groupBoxFooter.Controls.Add(this.buttonClean);
             this.groupBoxFooter.Controls.Add(this.btnTestDB);
             this.groupBoxFooter.Controls.Add(this.pictureBoxLoader);
             this.groupBoxFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -108,6 +110,17 @@
             this.groupBoxFooter.Size = new System.Drawing.Size(800, 60);
             this.groupBoxFooter.TabIndex = 4;
             this.groupBoxFooter.TabStop = false;
+            // 
+            // buttonClean
+            // 
+            this.buttonClean.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonClean.Location = new System.Drawing.Point(598, 16);
+            this.buttonClean.Name = "buttonClean";
+            this.buttonClean.Size = new System.Drawing.Size(75, 41);
+            this.buttonClean.TabIndex = 3;
+            this.buttonClean.Text = "Nettoyer";
+            this.buttonClean.UseVisualStyleBackColor = true;
+            this.buttonClean.Click += new System.EventHandler(this.buttonClean_Click);
             // 
             // BtnDecrypt
             // 
@@ -123,6 +136,7 @@
             // cryptField
             // 
             this.cryptField.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cryptField.Enabled = false;
             this.cryptField.Location = new System.Drawing.Point(0, 137);
             this.cryptField.Name = "cryptField";
             this.cryptField.Size = new System.Drawing.Size(800, 71);
@@ -162,6 +176,7 @@
         private System.Windows.Forms.GroupBox groupBoxFooter;
         private System.Windows.Forms.Button BtnDecrypt;
         private System.Windows.Forms.RichTextBox cryptField;
+        private System.Windows.Forms.Button buttonClean;
     }
 }
 
