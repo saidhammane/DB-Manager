@@ -7,8 +7,6 @@ namespace TestDB
 {
     public partial class AP_DB_Manager : Form
     {
-
-        private string connectionString;
         public AP_DB_Manager() => InitializeComponent();
 
         private async void btnTestDB_Click(object sender, EventArgs e)
@@ -17,12 +15,12 @@ namespace TestDB
             {
                 if (dbLinkField.Text.ToString() == "")
                 {
-                    AP_ShowString("le champ est vide !", "Base de donnée",
+                    AP_ShowStringPopUp("le champ est vide !", "Base de donnée",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    pictureBoxLoder.Visible = true;
+                    pictureBoxLoader.Visible = true;
                     SqlConnection cnn;
                     string dbLink = dbLinkField.Text.ToString();
                     if (!dbLink.Contains("Data"))
@@ -31,20 +29,20 @@ namespace TestDB
                     }
                     cnn = new SqlConnection(dbLink);
                     await cnn.OpenAsync();
-                    pictureBoxLoder.Visible = false;
-                    AP_ShowString("Connexion ouverte !", "Etat de connexion",
+                    pictureBoxLoader.Visible = false;
+                    AP_ShowStringPopUp("Connexion ouverte !", "Etat de la connexion",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                pictureBoxLoder.Visible = false;
-                AP_ShowString(ex.Message, "Etat de connexion",
+                pictureBoxLoader.Visible = false;
+                AP_ShowStringPopUp(ex.Message, "Etat de la connexion",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                pictureBoxLoder.Visible = false; 
+                pictureBoxLoader.Visible = false; 
             }
         }
 
@@ -54,7 +52,7 @@ namespace TestDB
             string dbLink = dbLinkField.Text.ToString();
             if (dbLink == "")
             {
-                AP_ShowString("le champ est vide !", "Cryptage",
+                AP_ShowStringPopUp("le champ est vide !", "Cryptage",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -63,7 +61,7 @@ namespace TestDB
                 {
                     if (!dbLink.Contains("Data"))
                     {
-                        AP_ShowString("Le lien doit être comme ça: Data Source=0.0.0.0; Initial Catalog=BD; User ID=utilisateur;password=motdepasse", "Cryptage",
+                        AP_ShowStringPopUp("Le lien doit être comme ça: Data Source=0.0.0.0; Initial Catalog=BD; User ID=utilisateur;password=motdepasse", "Cryptage",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
@@ -73,12 +71,12 @@ namespace TestDB
                         cryptField.Text = dbLink;
                     }
                     Clipboard.SetText(dbLink);
-                    AP_ShowString("Le lien est copié !", "Cryptage",
+                    AP_ShowStringPopUp("Le lien est copié !", "Cryptage",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch(Exception ex)
                 {
-                    AP_ShowString(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AP_ShowStringPopUp(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -88,7 +86,7 @@ namespace TestDB
             string dbLink = dbLinkField.Text.ToString();
             if (dbLink == "")
             {
-                AP_ShowString("Le champ est vide !", "Cryptage",
+                AP_ShowStringPopUp("Le champ est vide !", "Cryptage",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -97,7 +95,7 @@ namespace TestDB
                 {
                     if (dbLink.Contains("Data"))
                     {
-                        AP_ShowString("Le lien n’est pas encore chiffré", "Cryptage",
+                        AP_ShowStringPopUp("Le lien n’est pas encore chiffré", "Cryptage",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
@@ -107,11 +105,11 @@ namespace TestDB
                         cryptField.Text = dbLink;
                     }
                     Clipboard.SetText(dbLink);
-                    AP_ShowString("Le lien est copié !", "Cryptage",
+                    AP_ShowStringPopUp("Le lien est copié !", "Cryptage",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }catch(Exception ex)
                 {
-                    AP_ShowString(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AP_ShowStringPopUp(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -124,7 +122,7 @@ namespace TestDB
             }
             catch(Exception ex)
             {
-                AP_ShowString(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AP_ShowStringPopUp(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

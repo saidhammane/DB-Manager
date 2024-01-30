@@ -32,13 +32,13 @@
             this.groupBoxNavbar = new System.Windows.Forms.GroupBox();
             this.dbLinkField = new System.Windows.Forms.RichTextBox();
             this.btnCrypt = new System.Windows.Forms.Button();
-            this.pictureBoxLoder = new System.Windows.Forms.PictureBox();
+            this.pictureBoxLoader = new System.Windows.Forms.PictureBox();
             this.btnTestDB = new System.Windows.Forms.Button();
             this.groupBoxFooter = new System.Windows.Forms.GroupBox();
             this.BtnDecrypt = new System.Windows.Forms.Button();
             this.cryptField = new System.Windows.Forms.RichTextBox();
             this.groupBoxNavbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoader)).BeginInit();
             this.groupBoxFooter.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,17 +74,17 @@
             this.btnCrypt.UseVisualStyleBackColor = true;
             this.btnCrypt.Click += new System.EventHandler(this.btnCrypt_Click);
             // 
-            // pictureBoxLoder
+            // pictureBoxLoader
             // 
-            this.pictureBoxLoder.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxLoder.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLoder.Image")));
-            this.pictureBoxLoder.Location = new System.Drawing.Point(3, 16);
-            this.pictureBoxLoder.Name = "pictureBoxLoder";
-            this.pictureBoxLoder.Size = new System.Drawing.Size(40, 41);
-            this.pictureBoxLoder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLoder.TabIndex = 2;
-            this.pictureBoxLoder.TabStop = false;
-            this.pictureBoxLoder.Visible = false;
+            this.pictureBoxLoader.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBoxLoader.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLoader.Image")));
+            this.pictureBoxLoader.Location = new System.Drawing.Point(3, 16);
+            this.pictureBoxLoader.Name = "pictureBoxLoader";
+            this.pictureBoxLoader.Size = new System.Drawing.Size(40, 41);
+            this.pictureBoxLoader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLoader.TabIndex = 2;
+            this.pictureBoxLoader.TabStop = false;
+            this.pictureBoxLoader.Visible = false;
             // 
             // btnTestDB
             // 
@@ -101,7 +101,7 @@
             // groupBoxFooter
             // 
             this.groupBoxFooter.Controls.Add(this.btnTestDB);
-            this.groupBoxFooter.Controls.Add(this.pictureBoxLoder);
+            this.groupBoxFooter.Controls.Add(this.pictureBoxLoader);
             this.groupBoxFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBoxFooter.Location = new System.Drawing.Point(0, 208);
             this.groupBoxFooter.Name = "groupBoxFooter";
@@ -146,7 +146,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DB manager";
             this.groupBoxNavbar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoader)).EndInit();
             this.groupBoxFooter.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -157,7 +157,7 @@
         private System.Windows.Forms.GroupBox groupBoxNavbar;
         private System.Windows.Forms.RichTextBox dbLinkField;
         private System.Windows.Forms.Button btnCrypt;
-        private System.Windows.Forms.PictureBox pictureBoxLoder;
+        private System.Windows.Forms.PictureBox pictureBoxLoader;
         private System.Windows.Forms.Button btnTestDB;
         private System.Windows.Forms.GroupBox groupBoxFooter;
         private System.Windows.Forms.Button BtnDecrypt;

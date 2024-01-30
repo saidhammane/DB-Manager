@@ -16,7 +16,7 @@ namespace DBTest.Module
 
         public static string EncryptionKey = "AP_Dev_KEY";
 
-        public static void AP_ShowString(string text, string caption = null, 
+        public static void AP_ShowStringPopUp(string text, string caption = null, 
             MessageBoxButtons button = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.Information)
         {
             _ = MessageBox.Show(text, caption, button, icon);
